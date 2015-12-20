@@ -1,0 +1,22 @@
+{
+  "name": "audience",
+  "version": "0.0.1",
+  "description": "Real feedback in real time",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Andrew Pierno",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wrannaman/audience.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wrannaman/audience/issues"
+  },
+  "homepage": "https://github.com/wrannaman/audience#readme",
+  "dependencies": {
+    "koa": "^1.1.2"
+  }
+}
