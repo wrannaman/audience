@@ -10,7 +10,7 @@ var Layout = React.createClass({
       <html>
         <head>
           <title>{this.props.title}</title>
-          <link rel="stylesheet" href="/css/main.css" />
+          <link rel="stylesheet" href="/scss/main.scss" />
         </head>
         <body>
           {this.props.children}

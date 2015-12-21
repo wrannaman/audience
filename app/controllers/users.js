@@ -11,16 +11,18 @@ module.exports = {
     this.body = { id: id};
   },
   all: function *() {
-    // console.log('all');
-    // var all_users = yield User.run().then(function(users){
-    //   console.log('users', users);
-    //   return users;
-    // })
-    this.body = { users: "okay" }
+    console.log('all');
+    var all_users = yield User.run().then(function(users){
+      console.log('users', users);
+      return users;
+    })
+    this.body = { users: all_users }
   },
 
   create: function *() {
-    console.log('create!', this.req() );
+    var form = JSON.parse(this.body).fields;
+    console.log('form', form);
+
     //console.log('first_name!', first_name);
     //console.log('last_name!', last_name);
 
@@ -32,22 +34,26 @@ module.exports = {
     // city        : type.string(),
     // role        : type.number().default(types.user),
 
-     this.body = { success: 'ok'};
-    // var user = new User({
-    //   first_name: first_name,
-    //   last_name : last_name,
-    //   age : age,
-    //   email: email,
-    // });
-    // var saved = yield user.save()
-    // .then(function( user ){
-    //   return {success: true, user: user}
-    // })
-    // .error(function(e){
-    //   return {error: e}
-    // })
-    //
-    // this.body = saved;
+     //this.body = { success: 'ok'};
+    var user = new User({
+      first_name: form.first_name,
+      last_name: form.last_name,
+      email: form.email,
+      age: form.age,
+      country: form.country,
+      city: form.city,
+      role: form.role,
+      password: form.password
+    });
+    var saved = yield user.save()
+    .then(function( user ){
+      return {success: true, user: user}
+    })
+    .error(function(e){
+      return {error: e}
+    })
+
+    this.body = saved;
   },
 
   words: function*(id, slug) {
